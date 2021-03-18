@@ -16,29 +16,14 @@ class TicketsTableSeeder extends Seeder
     public function run()
     {
         \App\Models\Comment::truncate();
-        DB::table('tickets')->truncate();
-        $faker = Factory::create();
+        \App\Models\Ticket::truncate();
         $eventArr = Event::pluck('id')->toArray();
         $buyerArr = Buyer::pluck('id')->toArray();
 
         $ticketData = [];
         $commentData = [];
-        factory('App\Models\Tickets', 50)->create(['buyerIds' => $buyerArr, 'eventIds' => $eventArr]);
-
-        for ($i = 1; $i <= 50; $i++) {
-            // $buyerId = array_rand();
-            // $eventId = array_rand($eventArr);
-
-            // DB::table('tickets')->insert([
-            //     'buyer_id' => $buyerId,
-            //     'event_id' => $eventId,
-            // ]);
-            DB::table('comments')->insert([
-                'buyer_id' => $buyerId,
-                'event_id' => $eventId,
-                'rating' => $faker->numberBetween(1, 5),
-                'message' => $faker->text(100),
-            ]);
-        }
+        factory('\App\Models\Ticket', 50)->make(['buyerIds' => $buyerArr, 'eventIds' => $eventArr])->each(function ($ticker) {
+            factory('\App\Models\Comment')->make(['buyer_id' => $ticker->buyer_id, 'event_id' => $ticker->event_id]);
+        });
     }
 }

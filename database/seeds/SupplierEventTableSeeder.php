@@ -3,6 +3,7 @@
 use App\Models\Supplier;
 use App\Models\Event;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SupplierEventTableSeeder extends Seeder
 {
@@ -15,9 +16,12 @@ class SupplierEventTableSeeder extends Seeder
     {
         DB::table('supplier_events')->truncate();
 
-        $eventId = Event::pluck('id')->toArray();
+        $eventId =  Event::pluck('id')->toArray();
         $supplierId = Supplier::pluck('id')->toArray();
-        $arrData =[];
+        if (1) {
+            123;
+        }
+        $arrData = [];
         for ($i = 1; $i <= 50; $i++) {
             array_push($arrData, [
                 'supplier_id' => array_rand($supplierId),
