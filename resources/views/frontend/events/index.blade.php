@@ -26,7 +26,7 @@
                 url="{{ route('event.search') }}"
                 ep-url="{{ route('event.ep_search') }}"
                 url-event="{{ route('event.detail', 999) }}"
-                all-event="{{ json_encode($events) }}"
+                all-event="{{ json_encode([]) }}"
                 @can('buyer')
                 is-buyer="1"
                 @endcan

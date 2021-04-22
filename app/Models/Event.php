@@ -165,7 +165,7 @@ class Event extends Model
     }
 
     /**
-     * relationship to category
+     * relationship to comments
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

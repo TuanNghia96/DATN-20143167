@@ -36,10 +36,9 @@ class EventController extends Controller
      */
     public function eventIndex()
     {
-        $events = Event::get();
         $types = Type::active()->pluck('name', 'id')->toArray();
         $categories = Category::active()->pluck('name', 'id')->toArray();
-        return view('frontend.events.index', compact('events', 'types', 'categories'));
+        return view('frontend.events.index', compact('types', 'categories'));
     }
 
     /**
@@ -74,7 +73,7 @@ class EventController extends Controller
      */
     public function eventDetail($id)
     {
-        $event = Event::active()->with('coupon')->with('buyer')->with('comments')->findOrFail($id);
+        $event = Event::active()->with(['coupon', 'buyer', 'comments', 'category', 'type'])->findOrFail($id);
         return view('frontend.events.detail', compact('event'));
     }
 

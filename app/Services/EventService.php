@@ -22,7 +22,7 @@ class EventService implements EventServiceInterface
      */
     public function getSearch($input)
     {
-        $query = Event::with('coupon');
+        $query = Event::with(['coupon', 'comments']);
 
         //check like
         if (isset($input['name'])) {
@@ -60,7 +60,7 @@ class EventService implements EventServiceInterface
 
     public function getEpSearch($input)
     {
-        $query = Event::with('coupon');
+        $query = Event::with(['coupon', 'comments']);
         //check like
         if (isset($input['name'])) {
             $query->where('name', 'like', '%' . $input['name'] . '%')

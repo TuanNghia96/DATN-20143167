@@ -152,7 +152,6 @@
                         }
                     }
                 ).then(response => {
-                    console.log(response.data);
                     this.eventsData = response.data;
                     this.eventsShow = this.eventsData.slice(0, this.result)
                 }).catch(error => {
