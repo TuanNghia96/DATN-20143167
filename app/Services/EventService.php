@@ -26,8 +26,10 @@ class EventService implements EventServiceInterface
 
         //check like
         if (isset($input['name'])) {
-            $query->where('name', 'like', '%' . $input['name'] . '%')
+            $query->where(function ($q) use ($input) {
+                return $q->where('name', 'like', '%' . $input['name'] . '%')
                 ->orWhere('title', 'like', '%' . $input['name'] . '%');
+            });
         }
         //check input to type
         if (isset($input['type'])) {
@@ -63,8 +65,10 @@ class EventService implements EventServiceInterface
         $query = Event::with(['coupon', 'comments']);
         //check like
         if (isset($input['name'])) {
-            $query->where('name', 'like', '%' . $input['name'] . '%')
+            $query->where(function ($q) use ($input) {
+                return $q->where('name', 'like', '%' . $input['name'] . '%')
                 ->orWhere('title', 'like', '%' . $input['name'] . '%');
+            });
         }
         //check input to type
         if (isset($input['type'])) {

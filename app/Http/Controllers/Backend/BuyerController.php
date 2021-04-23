@@ -28,7 +28,7 @@ class BuyerController extends Controller
      */
     public function index(Request $request)
     {
-        $users = $this->buyer->withTrashed()->get();
+        $users = $this->buyer->get();
         return view('backend.buyers.index', compact('users'));
     }
 
@@ -40,7 +40,7 @@ class BuyerController extends Controller
      */
     public function show($id)
     {
-        $user = $this->buyer->withTrashed()->with('user', 'events')->findOrFail($id);
+        $user = $this->buyer->with('user', 'events')->findOrFail($id);
         return view('backend.buyers.detail', compact('user'));
     }
 

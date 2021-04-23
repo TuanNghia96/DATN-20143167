@@ -39,6 +39,7 @@ class SendTicket extends Mailable
         $message = $this;
         $event = $this->event;
         $url = $this->url;
+        \Log::info($url);
         return $this->view('mail.ticket_mail', compact('name', 'message', 'url', 'event'));
     }
 }

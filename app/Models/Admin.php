@@ -34,7 +34,7 @@ class Admin extends Model
 
         if (Gate::allows('edit-settings')) {
             static::addGlobalScope('withTrashed', function (Builder $builder) {
-                $builder->withTrashed();
+                $builder;
             });
         }
     }

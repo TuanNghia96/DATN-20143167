@@ -36,9 +36,9 @@ class Supplier extends Model
         parent::boot();
 
         if (Gate::allows('edit-settings')) {
-            static::addGlobalScope('withTrashed', function (Builder $builder) {
-                $builder->withTrashed();
-            });
+            // static::addGlobalScope('withTrashed', function (Builder $builder) {
+            //     $builder;
+            // });
         }
     }
 

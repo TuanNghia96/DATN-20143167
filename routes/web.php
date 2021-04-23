@@ -72,9 +72,9 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'middleware' => [
     Route::post('/admin', 'AdminController@store')->name('admin.store');
 
     //supplier
-    Route::resource('/suppliers', 'supplierController');
-    Route::get('/suppliers/delete/{id}', 'supplierController@delete')->name('suppliers.delete');
-    Route::get('/suppliers/restore/{id}', 'supplierController@restore')->name('suppliers.restore');
+    Route::resource('/suppliers', 'SupplierController');
+    Route::get('/suppliers/delete/{id}', 'SupplierController@delete')->name('suppliers.delete');
+    Route::get('/suppliers/restore/{id}', 'SupplierController@restore')->name('suppliers.restore');
 
     //buyers
     Route::get('/buyers', 'BuyerController@index')->name('buyers.index');
