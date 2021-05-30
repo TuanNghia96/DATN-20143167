@@ -26,14 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $events = Event::active()->with('coupon')->orderBy('point')->take(5)->get();
-        $subEvents = Event::active()->with('coupon')->orderBy('point', 'desc')->skip(5)->take(6)->get();
-        $webInfo = [
-            'buyer' => Buyer::count(),
-            'event' => Event::where('end_date', '<', Carbon::now())->count(),
-            'supplier' => Supplier::count(),
-        ];
-        return view('frontend.index', compact('events', 'subEvents', 'webInfo'));
+        $events = Event::active()->orderBy('point')->take(5)->get();
+        $subEvents = Event::active()->orderBy('point', 'desc')->skip(5)->take(6)->get();
+        return view('frontend.index', compact('events', 'subEvents'));
     }
 
     /**

@@ -2176,7 +2176,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
-//
 
 
 
@@ -2621,15 +2620,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["subEvents", "allType", "urlSub", "urlDetail"],
+  props: ["subEvents", "urlSub", "urlDetail"],
   created: function created() {
     this.sub_events = JSON.parse(this.subEvents) || [];
-    this.all_type = JSON.parse(this.allType) || [];
   },
   data: function data() {
     return {
-      sub_events: [],
-      all_type: []
+      sub_events: []
     };
   },
   methods: {
@@ -77160,52 +77157,31 @@ var render = function() {
               _c("div", { staticClass: "col-md-4 mb-3 md-form" }, [
                 _vm._m(5),
                 _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.oldData.coupon_id,
-                        expression: "oldData.coupon_id"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { name: "coupon_id" },
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.oldData,
-                          "coupon_id",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      }
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.oldData.coupon_id,
+                      expression: "oldData.coupon_id"
                     }
-                  },
-                  [
-                    _c("option"),
-                    _vm._v(" "),
-                    _vm._l(_vm.couponsData, function(coupon, index) {
-                      return _c(
-                        "option",
-                        { key: index, domProps: { value: index } },
-                        [_vm._v(_vm._s(coupon))]
-                      )
-                    })
                   ],
-                  2
-                ),
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Coupon value",
+                    name: "coupon_value"
+                  },
+                  domProps: { value: _vm.oldData.coupon_id },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.oldData, "coupon_id", $event.target.value)
+                    }
+                  }
+                }),
                 _vm._v(" "),
                 _vm.errors["coupon_id"]
                   ? _c(
@@ -77982,7 +77958,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", [
-      _vm._v("\n              Loại mã giảm giá\n              "),
+      _vm._v("\n              Giá trị mã giảm giá\n              "),
       _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
     ])
   },
@@ -78825,8 +78801,8 @@ var render = function() {
                           "event-cost flex justify-content-center align-items-center"
                       },
                       [
-                        _vm._v("\n                            Kèm coupon "),
-                        _c("span", [_vm._v(_vm._s(event.coupon.value + "%"))])
+                        _vm._v("\n                            Coupon "),
+                        _c("span", [_vm._v(_vm._s(event.coupon_value + "%"))])
                       ]
                     )
                   ]
@@ -94116,8 +94092,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/nghia/Desktop/VueProject/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/nghia/Desktop/VueProject/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\NghiaBa\Desktop\VueProject\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\NghiaBa\Desktop\VueProject\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

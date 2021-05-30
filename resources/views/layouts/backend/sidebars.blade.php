@@ -95,12 +95,6 @@
                                     Danh mục sự kiện</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ route('coupons.index') }}">
-                                    <span class="sub-item"><i class="fas fas fa-cart-plus"></i>
-                                    Phiếu giảm giá.</span>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </li>

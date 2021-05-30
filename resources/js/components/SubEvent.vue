@@ -33,18 +33,15 @@
     export default {
         props: [
             "subEvents",
-            "allType",
             "urlSub",
             "urlDetail",
         ],
         created() {
             this.sub_events = JSON.parse(this.subEvents) || [];
-            this.all_type = JSON.parse(this.allType) || [];
         },
         data() {
             return {
                 sub_events: [],
-                all_type: [],
             }
         },
         methods: {

@@ -98,17 +98,16 @@
             </div>
             <div class="col-md-4 mb-3 md-form">
               <label>
-                Loại mã giảm giá
+                Giá trị mã giảm giá
                 <span class="text-danger">*</span>
               </label>
-              <select name="coupon_id" class="form-control" v-model="oldData.coupon_id">
-                <option></option>
-                <option
-                  v-for="(coupon, index) in couponsData"
-                  :value="index"
-                  :key="index"
-                >{{ coupon }}</option>
-              </select>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Coupon value"
+                name="coupon_value"
+                v-model="oldData.coupon_id"
+              />
               <span class="text-danger" role="alert" v-if="errors[`coupon_id`]">
                 <strong>{{ errors[`coupon_id`][0] }}</strong>
               </span>

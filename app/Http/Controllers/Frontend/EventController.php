@@ -7,7 +7,6 @@ use App\Http\Requests\EventStoreRequest;
 use App\Jobs\SendTicketMail;
 use App\Models\Buyer;
 use App\Models\Category;
-use App\Models\Coupon;
 use App\Models\Supplier;
 use App\Models\Event;
 use App\Models\Type;
@@ -74,7 +73,7 @@ class EventController extends Controller
      */
     public function eventDetail($id)
     {
-        $event = Event::active()->with('coupon')->with('buyer')->with('comments')->findOrFail($id);
+        $event = Event::active()->with('buyer')->with('comments')->findOrFail($id);
         return view('frontend.events.detail', compact('event'));
     }
 
@@ -144,8 +143,7 @@ class EventController extends Controller
     {
         $types = Type::active()->pluck('name', 'id')->toArray();
         $categories = Category::active()->pluck('name', 'id')->toArray();
-        $coupons = Coupon::active()->distinct('value')->orderBy('value')->pluck('value', 'id')->toArray();
-        return view('frontend.events.create', compact('types', 'categories', 'coupons'));
+        return view('frontend.events.create', compact('types', 'categories'));
     }
 
 

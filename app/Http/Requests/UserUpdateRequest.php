@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Models\Category;
-use App\Models\Coupon;
 use App\Models\Type;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;

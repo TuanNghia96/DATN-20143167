@@ -28,8 +28,8 @@ class CreateEventsTable extends Migration
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->unsignedInteger('ticket_number');
-            $table->unsignedInteger('coupon_id')->nullable();
             $table->unsignedInteger('point')->default(1000);
+            $table->integer('coupon_value')->default(0);
             $table->string('note', 255)->nullable();
             $table->tinyInteger('status')->default(0);
             $table->timestamps();

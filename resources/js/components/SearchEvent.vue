@@ -78,7 +78,7 @@
                             </div>
 
                             <div class="event-cost flex justify-content-center align-items-center">
-                                Kèm coupon <span>{{ event.coupon.value + '%' }}</span>
+                                Coupon <span>{{ event.coupon_value + '%' }}</span>
                             </div>
                         </header>
 

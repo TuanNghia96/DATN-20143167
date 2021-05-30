@@ -186,7 +186,6 @@
             <div id="app">
                 <sub-event
                         sub-events="{{ json_encode($subEvents) }}"
-                        all-type="{{ json_encode(\App\Models\Type::pluck('name', 'id')->toArray()) }}"
                         url-sub="{{ route('event.sub')  }}"
                         url-detail="{{ route('event.detail', 999) }}"
                 ></sub-event>

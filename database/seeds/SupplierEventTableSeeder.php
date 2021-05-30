@@ -18,9 +18,6 @@ class SupplierEventTableSeeder extends Seeder
 
         $eventId =  Event::pluck('id')->toArray();
         $supplierId = Supplier::pluck('id')->toArray();
-        if (1) {
-            123;
-        }
         $arrData = [];
         for ($i = 1; $i <= 50; $i++) {
             array_push($arrData, [

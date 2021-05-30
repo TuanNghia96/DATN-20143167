@@ -22,7 +22,7 @@ class EventService implements EventServiceInterface
      */
     public function getSearch($input)
     {
-        $query = Event::with('coupon');
+        $query = Event::query();
 
         //check like
         if (isset($input['name'])) {
@@ -41,9 +41,9 @@ class EventService implements EventServiceInterface
         if (isset($input['coupon'])) {
             //started
             if ($input['coupon'] == 1) {
-                $query->where('coupon_id', null);
+                $query->where('coupon_value', 0);
             } else {
-                $query->where('coupon_id', '<>', null);
+                $query->where('coupon_value', '<>', 0);
             }
         }
         //check input to status
@@ -60,7 +60,7 @@ class EventService implements EventServiceInterface
 
     public function getEpSearch($input)
     {
-        $query = Event::with('coupon');
+        $query = Event::query();
         //check like
         if (isset($input['name'])) {
             $query->where('name', 'like', '%' . $input['name'] . '%')
@@ -78,9 +78,9 @@ class EventService implements EventServiceInterface
         if (isset($input['coupon'])) {
             //started
             if ($input['coupon'] == 1) {
-                $query->where('coupon_id', null);
+                $query->where('coupon_value', 0);
             } else {
-                $query->where('coupon_id', '<>', null);
+                $query->where('coupon_value', '<>', 0);
             }
         }
         $query->where('status', 1);
@@ -106,7 +106,7 @@ class EventService implements EventServiceInterface
      */
     public function join($id)
     {
-        $event = Event::active()->with('coupon')->with('buyer')->findOrFail($id);
+        $event = Event::active()->with('buyer')->findOrFail($id);
         if ($event->buyer->count() >= $event->ticket_number) {
             alert()->warning('Cảnh báo', 'Đã hết vé');
         } elseif (!$event->buyer->find(Auth::user()->user->id)) {
@@ -168,8 +168,7 @@ class EventService implements EventServiceInterface
      */
     public function getMore($params)
     {
-        return Event::active()->with('coupon')
-            ->orderBy('point', 'desc')->skip(5)->take($params['number'] + 6)->get();
+        return Event::active()->orderBy('point', 'desc')->skip(5)->take($params['number'] + 6)->get();
     }
 
     /**

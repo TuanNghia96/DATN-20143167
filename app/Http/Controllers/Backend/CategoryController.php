@@ -29,7 +29,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = $this->category->withTrashed()->get();
+        $categories = $this->category->get();
         return view('backend.categories.index', compact('categories'));
     }
 
@@ -69,7 +69,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = $this->category->withTrashed()->with('events')->findOrFail($id);
+        $category = $this->category->with('events')->findOrFail($id);
         return view('backend.categories.detail', compact('category'));
     }
 
@@ -81,7 +81,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = $this->category->withTrashed()->findOrFail($id);
+        $category = $this->category->findOrFail($id);
         return view('backend.categories.edit', compact('category'));
     }
 

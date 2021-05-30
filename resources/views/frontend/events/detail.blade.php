@@ -27,7 +27,7 @@
                             <div class="event-location">{{ $event->location }}</div>
                             <div class="event-date">{{ date('M d, Y @ h:i A', strtotime($event->start_date)) . ' - ' . date('M d, Y @ h:i A', strtotime($event->end_date)) }}</div>
                         </div>
-                        
+
                         <div class="buy-tickets flex justify-content-center align-items-center">
                             @if(!Auth::check())
                                 <a class="btn gradient-bg" href="{{ route('login') }}">Đăng nhập để nhận vé</a>
@@ -64,7 +64,7 @@
                 </div>
             </div>
         </div>
-        
+
         {{--hidden modal--}}
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -90,7 +90,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-12">
                 <div class="tabs">
@@ -107,39 +107,39 @@
                                         <label>Thời gian bắt đầu:</label>
                                         <p>{{ date('M d, Y @ h:i A', strtotime($event->start_date)) }}</p>
                                     </div>
-                                    
+
                                     <div class="single-event-details-row">
                                         <label>Thời gian kết thúc:</label>
                                         <p>{{ date('M d, Y @ h:i A', strtotime($event->end_date)) }}</p>
                                     </div>
-                                    
+
                                     <div class="single-event-details-row">
                                         <label>Mã giảm giá:</label>
-                                        <p><span>{{ $event->coupon->value . '%' }}</span></p>
+                                        <p><span>{{ $event->coupon_value . '%' }}</span></p>
                                     </div>
-                                    
+
                                     <div class="single-event-details-row">
                                         <label>Thể loại</label>
                                         <p>{{ $event->type->name }}</p>
                                     </div>
-                                    
+
                                     <div class="single-event-details-row">
                                         <label>Danh mục:</label>
                                         <p>{{ $event->category->name }}</p>
                                     </div>
-                                    
+
                                     <div class="single-event-details-row">
                                         <label>Địa điểm:</label>
                                         <p>{{ $event->location }}</p>
                                     </div>
-                                    
+
                                     <div class="single-event-details-row">
                                         <label>Số lượng vé:</label>
                                         <p>{{ $event->ticket_number }}</p>
                                     </div>
-                                
+
                                 </div>
-                                
+
                                 <div class="single-event-map">
                                     @php($location = str_replace(' ', '+', $event->location))
                                     <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=
@@ -158,7 +158,7 @@
                                     @foreach($event->images as $key => $value)
                                         <div class="column">
                                             <img src="{{ asset($value->image) }}" alt="Snow" style="width:100%">
-                                            
+
                                             <label for="">{{ $value->title }}</label>
                                         </div>
                                     @endforeach
@@ -217,34 +217,34 @@
         :root {
             --bannerFontSize: #logo0 . with;
         }
-        
+
         * {
             box-sizing: border-box;
         }
-        
+
         .column {
             float: left;
             width: 33.33%;
             padding: 5px;
         }
-        
+
         /* Clearfix (clear floats) */
         .row::after {
             content: "";
             clear: both;
             display: table;
         }
-        
+
         a.disabled {
             pointer-events: none;
             color: #ccc;
         }
-        
+
         #event_thumbnail {
             width: 100%;
             height: auto
         }
-        
+
         img.logo {
             object-fit: cover;
             width: 180px;

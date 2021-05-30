@@ -27,6 +27,7 @@ class Event extends Model
         'start_date',
         'end_date',
         'coupon_id',
+        'coupon_value',
         'point',
         'category_id',
         'status',
@@ -35,9 +36,9 @@ class Event extends Model
         'ticket_number',
     ];
 
-    protected $appends = [
-        'rating'
-    ];
+    // protected $appends = [
+    //     'rating'
+    // ];
 
     const WAITING = 0;
     const VALIDATED = 1;
@@ -82,16 +83,6 @@ class Event extends Model
     public function scopeOfPhone($query, $phone)
     {
         return $query->where('phone', $phone);
-    }
-
-    /**
-     * relationship to coupon
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function coupon()
-    {
-        return $this->belongsTo('App\Models\Coupon');
     }
 
     /**
