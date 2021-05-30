@@ -10,6 +10,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Event::class, function (Faker $faker) {
     static $number = 1;
+    $randDatetime = $faker->dateTimeBetween($startDate = '-15 months', $endDate = '+5 months');
     return [
         'name' => $faker->name,
         'title' => $faker->title,
@@ -33,9 +34,9 @@ $factory->define(Event::class, function (Faker $faker) {
         ]),
         'type_id' => $faker->randomElement(Type::pluck('id')),
         'category_id' => $faker->randomElement(Category::pluck('id')),
-        'public_date' => $faker->dateTimeBetween($startDate = '-5 days', $endDate = 'now'),
-        'start_date' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+5 months'),
-        'end_date' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+5 months'),
+        'public_date' => $randDatetime,
+        'start_date' => date_add($randDatetime, date_interval_create_from_date_string('4 days')),
+        'end_date' => date_add($randDatetime, date_interval_create_from_date_string('8 days')),
         'ticket_number' => $faker->numerify('##000'),
         'coupon_value' =>  rand(1, 99),
         'point' => $faker->numberBetween(0, 1000),

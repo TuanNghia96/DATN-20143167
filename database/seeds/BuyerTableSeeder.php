@@ -36,6 +36,6 @@ class BuyerTableSeeder extends Seeder
         ]);
 
         //create buyers account
-        factory('App\Models\Buyer', 1)->create();
+        factory('App\Models\Buyer', 10)->create();
     }
 }
