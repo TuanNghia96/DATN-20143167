@@ -12,7 +12,7 @@ $factory->define(Event::class, function (Faker $faker) {
     static $number = 1;
     $randDatetime = $faker->dateTimeBetween($startDate = '-15 months', $endDate = '+5 months');
     return [
-        'name' => $faker->name,
+        'name' => $faker->randomElement(Helper::getEventName()),
         'title' => $faker->title,
         'code' => $number++,
         'location' => $faker->randomElement(Helper::getLocation()),
@@ -40,6 +40,8 @@ $factory->define(Event::class, function (Faker $faker) {
         'ticket_number' => $faker->numerify('##000'),
         'coupon_value' =>  rand(1, 99),
         'point' => $faker->numberBetween(0, 1000),
-        'status' => array_rand(Event::$status)
+        'status' => $randDatetime > now()
+            ? array_rand(Event::$status)
+            : $faker->randomElement([Event::VALIDATED, Event::CANCEL])
     ];
 });

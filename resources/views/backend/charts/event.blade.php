@@ -89,7 +89,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Bieu do so luong su kien trong 2 nam tro lai day</div>
+                            <div class="card-title">Biểu đồ số lượng sự kiện trong 2 năm trở lại</div>
                         </div>
                         <div class="card-body">
                             <div class="chart-container">
@@ -101,7 +101,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">So luong event theo type trong nam</div>
+                            <div class="card-title">Số lượng event theo type trong năm</div>
                         </div>
                         <div class="card-body">
                             <div class="chart-container">
@@ -113,7 +113,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">So luong event theo classicy trong nam</div>
+                            <div class="card-title">Số lượng event theo classicy trong năm</div>
                         </div>
                         <div class="card-body">
                             <div class="chart-container">
