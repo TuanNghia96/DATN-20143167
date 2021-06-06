@@ -26,7 +26,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $users = $this->supplier->withTrashed()->get();
+        $users = $this->supplier->get();
         return view('backend.suppliers.index', compact('users'));
     }
 
@@ -38,7 +38,7 @@ class SupplierController extends Controller
      */
     public function show($id)
     {
-        $user = $this->supplier->withTrashed()->with('user')->findOrFail($id);
+        $user = $this->supplier->with('user')->findOrFail($id);
         $cites = supplier::CITY;
         return view('backend.suppliers.detail', compact('user', 'cites'));
     }

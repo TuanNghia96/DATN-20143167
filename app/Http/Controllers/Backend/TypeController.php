@@ -28,7 +28,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = $this->type->withTrashed()->get();
+        $types = $this->type->get();
         return view('backend.types.index', compact('types'));
     }
 
@@ -69,7 +69,7 @@ class TypeController extends Controller
      */
     public function show($id)
     {
-        $type = Type::with('events')->withTrashed()->findOrFail($id);
+        $type = Type::with('events')->findOrFail($id);
         return view('backend.types.detail', compact('type'));
     }
 
@@ -81,7 +81,7 @@ class TypeController extends Controller
      */
     public function edit($id)
     {
-        $type = $this->type->withTrashed()->findOrFail($id);
+        $type = $this->type->findOrFail($id);
         return view('backend.types.edit', compact('type'));
     }
 

@@ -22,12 +22,14 @@ class EventService implements EventServiceInterface
      */
     public function getSearch($input)
     {
-        $query = Event::with('coupon');
+        $query = Event::with(['coupon', 'comments']);
 
         //check like
         if (isset($input['name'])) {
-            $query->where('name', 'like', '%' . $input['name'] . '%')
+            $query->where(function ($q) use ($input) {
+                return $q->where('name', 'like', '%' . $input['name'] . '%')
                 ->orWhere('title', 'like', '%' . $input['name'] . '%');
+            });
         }
         //check input to type
         if (isset($input['type'])) {
@@ -60,11 +62,13 @@ class EventService implements EventServiceInterface
 
     public function getEpSearch($input)
     {
-        $query = Event::with('coupon');
+        $query = Event::with(['coupon', 'comments']);
         //check like
         if (isset($input['name'])) {
-            $query->where('name', 'like', '%' . $input['name'] . '%')
+            $query->where(function ($q) use ($input) {
+                return $q->where('name', 'like', '%' . $input['name'] . '%')
                 ->orWhere('title', 'like', '%' . $input['name'] . '%');
+            });
         }
         //check input to type
         if (isset($input['type'])) {

@@ -58,13 +58,6 @@ class Event extends Model
     {
         parent::boot();
 
-        if (Gate::allows('supplier')) {
-            static::addGlobalScope('supplier', function (Builder $builder) {
-                $builder->where('status', '<>', Event::WAITING)->orWhereHas('mainSupplier', function ($query) {
-                    $query->where('supplier_id', \Auth::user()->user->id);
-                });
-            });
-        }
         if (Gate::allows('buyer') || Auth::guest()) {
             static::addGlobalScope('buyer', function (Builder $builder) {
                 $builder->where('status', '=', Event::VALIDATED)->where('public_date', '<', now());
@@ -165,7 +158,7 @@ class Event extends Model
     }
 
     /**
-     * relationship to category
+     * relationship to comments
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

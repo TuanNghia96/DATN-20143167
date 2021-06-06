@@ -24,7 +24,6 @@ class CreateBuyersTable extends Migration
             $table->string('bank_account', 20)->nullable();
             $table->string('avatar', 255)->nullable();
             $table->timestamps();
-
         });
     }
 
