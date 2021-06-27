@@ -22,6 +22,7 @@ class AdminTableSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('123456'),
             'role' => User::ADMIN,
+            'status' => true,
         ]);
         Admin::create([
             'user_id' => $user->id,
