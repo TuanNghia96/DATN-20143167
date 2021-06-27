@@ -68,12 +68,14 @@ class ForgotPasswordController extends Controller
     {
         $params = $request->all();
 
-        $token = DB::table('reset_passwords')->where([
+        $user = User::where([
             'email' => $params['email'],
-            'token' => $params['token'],
+            'remember_token' => $params['token'],
         ])->first();
-        if ($token) {
-            return view('auth.change_password');
+        if ($user) {
+            $email = $user->email;
+            $token = $user->remember_token;
+            return view('auth.change_password', compact('email', 'token'));
         }
         alert()->error('Lỗi', 'Lỗi hệ thống');
         return redirect()->back();
@@ -90,15 +92,16 @@ class ForgotPasswordController extends Controller
         ]);
 
         $params = $request->all();
-        $token = DB::table('reset_passwords')->where([
+        $user = User::where([
             'email' => $params['email'],
-            'token' => $params['token'],
+            'remember_token' => $params['token'],
         ])->first();
-        $user = User::where('email', $params['email'])->first();
-        if ($token && $user) {
+        if ($user) {
             $user->update([
-                'password' => \Hash::make($params['password'])
+                'password' => \Hash::make($params['password']),
+                'remember_token' => '',
             ]);
+            $user->save();
             alert()->success('Thành công', 'Đã thay đổi mật khẩu, hãy đăng nhập lại');
             return redirect()->route('login');
         }
