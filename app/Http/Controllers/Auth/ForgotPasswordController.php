@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Jobs\SendResetPassEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class ForgotPasswordController extends Controller

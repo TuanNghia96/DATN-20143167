@@ -29,6 +29,7 @@ class User extends Model implements Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'status',
     ];
     protected $appends = [
         'user'

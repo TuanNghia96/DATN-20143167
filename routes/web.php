@@ -13,6 +13,7 @@
 
 \Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/verify/check', 'Auth\RegisterController@checkVerify')->name('verify.mail');
 
 //reset password
 Route::get('/password/get', 'Auth\ForgotPasswordController@showResetPassword')->name('password.reset');
