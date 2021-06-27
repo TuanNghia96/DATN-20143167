@@ -48,11 +48,8 @@ class ForgotPasswordController extends Controller
         $user = User::where('email', $params['email'])->first();
         if ($user) {
             $token = Str::random(100);
-            $reset = DB::table('reset_passwords')->insert([
-                'email' => $user->email,
-                'token' => $token
-            ]);
-
+            $user->remember_token = $token;
+            $user->save();
             dispatch(new SendResetPassEmail($user, route('password.mail', [
                 'email' => $user->email,
                 'token' => $token
