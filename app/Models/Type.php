@@ -20,7 +20,7 @@ class Type extends Model
         0 => 'Giảm giá',
         1 => 'Ra mắt sp mới',
         2 => 'Hội chợ',
-        3 => 'Kỷ niệm thày lập, khai trương',
+        3 => 'Kỷ niệm thành lập, khai trương',
         4 => 'Hội nghị, hội thảo',
         5 => 'Ngày lễ',
     ];
@@ -32,6 +32,20 @@ class Type extends Model
         4 => 'Hàng tiêu dùng',
         5 => 'Đồ ăn',
         6 => 'Khác',
+    ];
+
+    const TITLE = [
+        'Super Sale',
+        'New Product',
+        'Market',
+        'Fair',
+        'Celebrate',
+        'Establish',
+        'Grand Opening',
+        'Conference',
+        'Seminor',
+        'Holiday',
+        'Debuts',
     ];
 
     /**

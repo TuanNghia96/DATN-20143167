@@ -5,15 +5,14 @@
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\Type;
-use Database\Factories\ExampleFactory;
 use Faker\Generator as Faker;
 
 $factory->define(Event::class, function (Faker $faker) {
     static $number = 1;
     $randDatetime = $faker->dateTimeBetween($startDate = '-15 months', $endDate = '+5 months');
     return [
-        'name' => $faker->name,
-        'title' => $faker->title,
+        'name' => $faker->randomElement(Helper::getEventName()),
+        'title' =>$faker->randomElement(Type::TITLE),
         'code' => $number++,
         'location' => $faker->randomElement(Helper::getLocation()),
         'summary' => $faker->realText(300),
@@ -40,6 +39,8 @@ $factory->define(Event::class, function (Faker $faker) {
         'ticket_number' => $faker->numerify('##000'),
         'coupon_value' =>  rand(1, 99),
         'point' => $faker->numberBetween(0, 1000),
-        'status' => array_rand(Event::$status)
+        'status' => $randDatetime > now()
+            ? array_rand(Event::$status)
+            : $faker->randomElement([Event::VALIDATED, Event::CANCEL])
     ];
 });
