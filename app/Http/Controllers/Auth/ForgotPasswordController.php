@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Jobs\SendResetPassEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class ForgotPasswordController extends Controller
@@ -48,11 +47,8 @@ class ForgotPasswordController extends Controller
         $user = User::where('email', $params['email'])->first();
         if ($user) {
             $token = Str::random(100);
-            $reset = DB::table('reset_passwords')->insert([
-                'email' => $user->email,
-                'token' => $token
-            ]);
-
+            $user->remember_token = $token;
+            $user->save();
             dispatch(new SendResetPassEmail($user, route('password.mail', [
                 'email' => $user->email,
                 'token' => $token
@@ -71,12 +67,14 @@ class ForgotPasswordController extends Controller
     {
         $params = $request->all();
 
-        $token = DB::table('reset_passwords')->where([
+        $user = User::where([
             'email' => $params['email'],
-            'token' => $params['token'],
+            'remember_token' => $params['token'],
         ])->first();
-        if ($token) {
-            return view('auth.change_password');
+        if ($user) {
+            $email = $user->email;
+            $token = $user->remember_token;
+            return view('auth.change_password', compact('email', 'token'));
         }
         alert()->error('Lỗi', 'Lỗi hệ thống');
         return redirect()->back();
@@ -93,15 +91,16 @@ class ForgotPasswordController extends Controller
         ]);
 
         $params = $request->all();
-        $token = DB::table('reset_passwords')->where([
+        $user = User::where([
             'email' => $params['email'],
-            'token' => $params['token'],
+            'remember_token' => $params['token'],
         ])->first();
-        $user = User::where('email', $params['email'])->first();
-        if ($token && $user) {
+        if ($user) {
             $user->update([
-                'password' => \Hash::make($params['password'])
+                'password' => \Hash::make($params['password']),
+                'remember_token' => '',
             ]);
+            $user->save();
             alert()->success('Thành công', 'Đã thay đổi mật khẩu, hãy đăng nhập lại');
             return redirect()->route('login');
         }

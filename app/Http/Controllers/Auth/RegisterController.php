@@ -9,6 +9,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use App\Jobs\SendVerifyMail;
+use Illuminate\Support\Str;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -55,7 +59,7 @@ class RegisterController extends Controller
             isset($data['role']) ? (
             $data['role'] == User::SUPPLIER ? [
                 'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:6'],
                 'confirmpassword' => ['required', 'string', 'min:6', 'same:password'],
                 'role' => ['required'],
@@ -66,7 +70,7 @@ class RegisterController extends Controller
             ] : [
                 'last_name' => ['required', 'string', 'max:255'],
                 'first_name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:6'],
                 'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'confirmpassword' => ['required', 'string', 'min:6', 'same:password'],
@@ -91,6 +95,7 @@ class RegisterController extends Controller
     {
         DB::beginTransaction();
         try {
+            $data['password'] = \Hash::make( $data['password']);
             $user = User::create($data);
             $data['user_id'] = $user->id;
             if ($data['role'] == User::SUPPLIER) {
@@ -128,5 +133,44 @@ class RegisterController extends Controller
             throw new Exception($e->getMessage());
         }
         return $user;
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+        $user->remember_token = Str::random(100);
+        $user->save();
+        dispatch(new SendVerifyMail($user, route('verify.mail', [
+            'email' => $user->email,
+            'token' => $user->remember_token
+        ])));
+        alert()->success('Thành công', 'Đã đăng ký thành công, vào hòm thư để kích hoạt.');
+        return redirect()->back();
+    }
+
+    /**
+     * show change password view
+     */
+    public function checkVerify(Request $request)
+    {
+        $params = $request->all();
+
+        $user = User::where([
+            'email' => $params['email'],
+            'remember_token' => $params['token'],
+        ])->first();
+        if ($user) {
+            $user->remember_token = '';
+            $user->status = true;
+            $user->save();
+            alert()->success('Thành công', 'Đã kích hoạt tài khoản thành công.');
+            $this->guard()->login($user);
+            return $this->registered($request, $user)
+                            ?: redirect($this->redirectPath());
+        }
+        alert()->error('Lỗi', 'Lỗi hệ thống');
+        return redirect()->back();
     }
 }

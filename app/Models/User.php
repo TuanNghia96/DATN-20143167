@@ -24,10 +24,12 @@ class User extends Model implements Authenticatable
         'email',
         'password',
         'role',
+        'remember_token',
     ];
     protected $hidden = [
         'password',
         'remember_token',
+        'status',
     ];
     protected $appends = [
         'user'

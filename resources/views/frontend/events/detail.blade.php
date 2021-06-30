@@ -33,8 +33,8 @@
                                 <a class="btn gradient-bg" href="{{ route('login') }}">Đăng nhập để nhận vé</a>
                             @else
                                 @can('buyer')
-                                    @if(($event->start_date <= now()))
-                                        <button class="btn btn-default">Sự kiện chưa bắt đầu</button>
+                                    @if(($event->end_date > now()))
+                                        <button class="btn btn-default">Sự kiện đã kết thúc</button>
                                     @else
                                         <a class="btn gradient-bg" @if($event->ticket_number <= $event->buyer->count()) disabled @endif href="{{ route('event.join', $event->id) }}">Nhận vé</a>
                                     @endif

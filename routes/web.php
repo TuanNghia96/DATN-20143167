@@ -13,6 +13,7 @@
 
 \Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/verify/check', 'Auth\RegisterController@checkVerify')->name('verify.mail');
 
 //reset password
 Route::get('/password/get', 'Auth\ForgotPasswordController@showResetPassword')->name('password.reset');
@@ -90,7 +91,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'middleware' => [
     Route::get('/events/detail/{id}', 'EventController@getDetail')->name('events.detail');
     Route::get('/events/success/{id}', 'EventController@setSuccess')->name('events.success');
     Route::post('/events/cancel', 'EventController@cancel')->name('events.cancel');
-    Route::get('/coupons', 'CouponController@index')->name('coupons.index');
+    // Route::get('/coupons', 'CouponController@index')->name('coupons.index');
 
 
     //type, category

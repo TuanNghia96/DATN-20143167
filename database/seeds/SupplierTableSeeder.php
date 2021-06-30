@@ -22,6 +22,7 @@ class SupplierTableSeeder extends Seeder
             'email' => 'doanhnghiep@gmail.com',
             'password' => Hash::make('123456'),
             'role' => User::SUPPLIER,
+            'status' => true,
         ]);
         Supplier::create([
             'user_id' => $user->id,

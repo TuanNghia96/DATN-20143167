@@ -23,6 +23,7 @@ class BuyerTableSeeder extends Seeder
             'email' => 'nguyenbatuannghia5996@gmail.com',
             'password' => Hash::make('123456'),
             'role' => User::BUYER,
+            'status' => true,
         ]);
         Buyer::create([
             'user_id' => $user->id,
