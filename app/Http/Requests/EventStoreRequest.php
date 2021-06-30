@@ -41,9 +41,9 @@ class EventStoreRequest extends FormRequest
                 Carbon::now()->addDay(2)->format('Y-m-d  H:i:s'),
             "start_date" => "required|date_format:d-m-Y H:i:s|after:public_date",
             "end_date" => "required|date_format:d-m-Y H:i:s|after:start_date",
-            "images.*.image" => "required|image",
+            "images.*.image" => "required",
             "images.*.title" => "required|string|max:30",
-            "avatar" => "required|image",
+            "avatar" => "required",
         ];
     }
 

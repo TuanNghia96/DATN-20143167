@@ -20,7 +20,7 @@ class BuyerTableSeeder extends Seeder
 
         // create main buyer account
         $user = User::create([
-            'email' => 'nguyenbatuannghia5996@gmail.com',
+            'email' => 'client@gmail.com',
             'password' => Hash::make('123456'),
             'role' => User::BUYER,
             'status' => true,

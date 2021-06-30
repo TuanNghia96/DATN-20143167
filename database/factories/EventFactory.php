@@ -17,19 +17,19 @@ $factory->define(Event::class, function (Faker $faker) {
         'code' => $number++,
         'location' => $faker->randomElement(Helper::getLocation()),
         'summary' => $faker->realText(300),
-        'avatar' => '/fakers/events/img_bg_' . rand(1, 50) . '.jpg',
+        'avatar' => '/fakers/events/img_bg_' . rand(1, 77) . '.jpg',
         'images' => json_encode([
             [
                 'title' => 'title2',
-                'image' => 'fakers/events/img_bg_' . rand(1, 50) . '.jpg'
+                'image' => 'fakers/events/img_bg_' . rand(1, 77) . '.jpg'
             ],
             [
                 'title' => 'title2',
-                'image' => 'fakers/events/img_bg_' . rand(1, 50) . '.jpg'
+                'image' => 'fakers/events/img_bg_' . rand(1, 77) . '.jpg'
             ],
             [
                 'title' => 'title2',
-                'image' => 'fakers/events/img_bg_' . rand(1, 50) . '.jpg'
+                'image' => 'fakers/events/img_bg_' . rand(1, 77) . '.jpg'
             ]
         ]),
         'type_id' => $faker->randomElement(Type::pluck('id')),

@@ -6,7 +6,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Event count')</title>
+    <title>@yield('title', 'Event marketing')</title>
 
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'/>
     <link rel="icon" href="{{ asset('frontend/images/logo.png') }}" type="image/x-icon">
@@ -158,10 +158,10 @@
     var notificationsWrapper = $('.dropdown-notifications');
     var notificationsToggle    = notificationsWrapper.find('a[data-toggle]');
     var notifications          = notificationsWrapper.find('li.pusher');
-    
+
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
-    
+
     var pusher = new Pusher('1608558ccb79baab7db8', {
         cluster: 'ap1'
     });

@@ -69,7 +69,7 @@
                             <li>
                                 <a href="{{ route('events.delete') }}">
                                     <span class="sub-item"><i class="fas fa-calendar-times"></i>
-                                        Sự kiện xin huỷ</span>
+                                        Sự kiện đã hủy</span>
                                 </a>
                             </li>
                         </ul>
