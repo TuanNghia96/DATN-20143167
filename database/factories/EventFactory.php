@@ -5,7 +5,6 @@
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\Type;
-use Database\Factories\ExampleFactory;
 use Faker\Generator as Faker;
 
 $factory->define(Event::class, function (Faker $faker) {
@@ -13,7 +12,7 @@ $factory->define(Event::class, function (Faker $faker) {
     $randDatetime = $faker->dateTimeBetween($startDate = '-15 months', $endDate = '+5 months');
     return [
         'name' => $faker->randomElement(Helper::getEventName()),
-        'title' => $faker->title,
+        'title' =>$faker->randomElement(Type::TITLE),
         'code' => $number++,
         'location' => $faker->randomElement(Helper::getLocation()),
         'summary' => $faker->realText(300),
