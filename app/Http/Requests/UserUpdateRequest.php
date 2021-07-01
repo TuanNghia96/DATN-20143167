@@ -32,7 +32,7 @@ class UserUpdateRequest extends FormRequest
             'confirm_password' => 'nullable|string|min:6|same:password',
             'last_name' => 'required|string|max:255',
             'first_name' => 'required|string|max:255',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avatar' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'bank_account' => 'nullable|string|min:12',
             'phone' => 'required|string|min:10',
             'address' => 'required|string|max:255',

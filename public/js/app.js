@@ -2372,8 +2372,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   props: ["event", "comments", "isJoined", "postUrl", "csrfToken"],
@@ -78150,7 +78148,11 @@ var render = function() {
                     "upcoming-event-wrap flex flex-wrap justify-content-between align-items-center"
                 },
                 [
-                  _vm._m(0),
+                  _c("h4", [
+                    _vm._v(
+                      "\n                        Đánh giá:\n                    "
+                    )
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "entry-meta" }, [
                     _c(
@@ -78224,7 +78226,7 @@ var render = function() {
                           domProps: { value: _vm.eventData.id }
                         }),
                         _vm._v(" "),
-                        _vm._m(1),
+                        _vm._m(0),
                         _vm._v(" "),
                         _c(
                           "button",
@@ -78253,7 +78255,7 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _c("div", { staticClass: "upcoming-events" }, [
-        _vm._m(2),
+        _vm._m(1),
         _vm._v(" "),
         _c("div", { staticClass: "upcoming-events-list" }, [
           _c(
@@ -78300,7 +78302,7 @@ var render = function() {
             { staticClass: "upcoming-events" },
             [
               _c("div", { staticClass: "upcoming-events-header" }, [
-                _c("h4", [_vm._v("Có " + _vm._s(_vm.count) + " Đánh giá")])
+                _c("h4", [_vm._v("Có " + _vm._s(_vm.count) + " bình luận")])
               ]),
               _vm._v(" "),
               _vm._l(_vm.commentShow, function(comment, i) {
@@ -78365,23 +78367,11 @@ var render = function() {
             ],
             2
           )
-        : _c("div", { staticClass: "upcoming-events" }, [_vm._m(3)])
+        : _c("div", { staticClass: "upcoming-events" }, [_vm._m(2)])
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("figure", { staticClass: "events-thumbnail" }, [
-      _c("h3", [
-        _vm._v(
-          "\n                            Thêm đánh giá:\n                        "
-        )
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -78406,7 +78396,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "upcoming-events-header" }, [
-      _c("h4", [_vm._v("Chưa có đánh giá")])
+      _c("h4", [_vm._v("Chưa có bình luận")])
     ])
   }
 ]

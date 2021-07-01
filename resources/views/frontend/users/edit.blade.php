@@ -43,7 +43,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-4 mb-3 md-form">
-                                <label>Mật khẩu nhập lại:</label>
+                                <label>Nhập lại mật khẩu:</label>
                                 <input type="text" name="confirm_password" class="form-control">
                                 @error('confirm_password')
                                 <span class="text-danger" role="alert">
@@ -97,7 +97,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-4 mb-3 md-form">
-                                <label>Thể loại yêu thích</label>
+                                <label>Thể loại sự kiện yêu thích</label>
                                 <select name="event_type" class="form-control" id="">
                                     <option value=""></option>
                                     @foreach($types as $key => $value)
@@ -111,7 +111,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-4 mb-3 md-form">
-                                <label>Thể loại yêu thích</label>
+                                <label>Danh mục sự kiện yêu thích</label>
                                 <select name="event_category" class="form-control" id="">
                                     <option value=""></option>
                                     @foreach($types as $key => $value)
@@ -167,11 +167,11 @@
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-                
+
                 reader.onload = function (e) {
                     $('#blah').attr('src', e.target.result);
                 };
-                
+
                 reader.readAsDataURL(input.files[0]); // convert to base64 string
             }
         }

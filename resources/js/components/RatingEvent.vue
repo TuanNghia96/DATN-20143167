@@ -7,11 +7,9 @@
                                 </div>-->
                 <div class="upcoming-events-list">
                     <div class="upcoming-event-wrap flex flex-wrap justify-content-between align-items-center">
-                        <figure class="events-thumbnail">
-                            <h3>
-                                Thêm đánh giá:
-                            </h3>
-                        </figure>
+                        <h4>
+                            Đánh giá:
+                        </h4>
 
                         <div class="entry-meta">
                             <div class="event-date">
@@ -59,7 +57,7 @@
             </div>
             <div class="upcoming-events" v-if="count">
                 <div class="upcoming-events-header">
-                    <h4>Có {{ count }} Đánh giá</h4>
+                    <h4>Có {{ count }} bình luận</h4>
                 </div>
 
                 <div class="upcoming-events-list" v-for="(comment, i) in commentShow">
@@ -87,7 +85,7 @@
             </div>
             <div class="upcoming-events" v-else>
                 <div class="upcoming-events-header">
-                    <h4>Chưa có đánh giá</h4>
+                    <h4>Chưa có bình luận</h4>
                 </div>
             </div>
         </div>
@@ -95,7 +93,7 @@
 </template>
 
 <script>
-    
+
     export default {
         components: {},
         props: [
