@@ -5,10 +5,13 @@
  */
 import { VueEditor } from "vue2-editor";
 import StarRating from 'vue-star-rating'
+import Vue from "vue";
+import { VLazyImagePlugin } from "v-lazy-image";
 
 require('./bootstrap');
 
 window.Vue = require('vue');
+Vue.use(VLazyImagePlugin);
 
 /**
  * The following block of code may be used to automatically register your
