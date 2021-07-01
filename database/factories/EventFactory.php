@@ -8,7 +8,7 @@ use App\Models\Type;
 use Faker\Generator as Faker;
 
 $factory->define(Event::class, function (Faker $faker) {
-    static $number = 10;
+    static $number = 11;
     $randDatetime = $faker->dateTimeBetween($startDate = '-15 months', $endDate = '+5 months');
     return [
         'name' => $faker->randomElement(Helper::getEventName()),
