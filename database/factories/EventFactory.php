@@ -8,7 +8,7 @@ use App\Models\Type;
 use Faker\Generator as Faker;
 
 $factory->define(Event::class, function (Faker $faker) {
-    static $number = 1;
+    static $number = 10;
     $randDatetime = $faker->dateTimeBetween($startDate = '-15 months', $endDate = '+5 months');
     return [
         'name' => $faker->randomElement(Helper::getEventName()),
@@ -38,7 +38,7 @@ $factory->define(Event::class, function (Faker $faker) {
         'end_date' => date_add($randDatetime, date_interval_create_from_date_string('8 days')),
         'ticket_number' => $faker->numerify('##000'),
         'coupon_value' =>  rand(1, 99),
-        'point' => $faker->numberBetween(0, 1000),
+        'point' => $faker->numberBetween(0, 900),
         'status' => $randDatetime > now()
             ? array_rand(Event::$status)
             : $faker->randomElement([Event::VALIDATED, Event::CANCEL])

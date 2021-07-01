@@ -33,6 +33,7 @@ class CreateEventsTable extends Migration
             $table->string('note', 255)->nullable();
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
+            // $table->index(['name', 'title']);
         });
     }
 
