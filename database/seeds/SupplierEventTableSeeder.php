@@ -19,11 +19,11 @@ class SupplierEventTableSeeder extends Seeder
         $eventId =  Event::pluck('id')->toArray();
         $supplierId = Supplier::pluck('id')->toArray();
         $arrData = [];
-        for ($i = 1; $i <= 50; $i++) {
+        foreach ($eventId as $id) {
             array_push($arrData, [
                 'supplier_id' => array_rand($supplierId),
-                'event_id' => array_rand($eventId),
-                'role' => array_rand([1 => 1, 2 => 2]),
+                'event_id' => $id,
+                'role' => 1,
             ]);
         }
         DB::table('supplier_events')->insert($arrData);

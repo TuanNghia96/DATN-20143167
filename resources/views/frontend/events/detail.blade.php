@@ -33,7 +33,7 @@
                                 <a class="btn gradient-bg" href="{{ route('login') }}">Đăng nhập để nhận vé</a>
                             @else
                                 @can('buyer')
-                                    @if(($event->end_date > now()))
+                                    @if(($event->end_date < now()))
                                         <button class="btn btn-default">Sự kiện đã kết thúc</button>
                                     @else
                                         <a class="btn gradient-bg" @if($event->ticket_number <= $event->buyer->count()) disabled @endif href="{{ route('event.join', $event->id) }}">Nhận vé</a>
@@ -48,7 +48,7 @@
                                         </button>
                                     @elseif($event->suppliers->find(\Auth::user()->user->id) || $event->mainSupplier->find(\Auth::user()->user->id))
                                         <a class="btn gradient-bg" readonly>Đã tham gia sự kiện</a>
-                                    @elseif(($event->status != \App\Models\Event::VALIDATED) || ($event->public_date < now()))
+                                    @elseif(($event->status != \App\Models\Event::VALIDATED) || ($event->public_date > now()))
                                         <button class="btn btn-default">Sự kiện đã bắt đầu</button>
                                     @else
                                         <a class="btn gradient-bg" href="{{ route('event.connect', $event->id) }}">Tham gia sự kiện</a>

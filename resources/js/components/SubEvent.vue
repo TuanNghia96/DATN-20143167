@@ -19,7 +19,7 @@
                 </div>
 
                 <footer class="entry-footer">
-                    <a :href="urlDetail.replace(999, event.id)" >Get Ticket</a>
+                    <a :href="urlDetail.replace(999, event.id)" >THAM GIA</a>
                 </footer>
             </div>
         </div>

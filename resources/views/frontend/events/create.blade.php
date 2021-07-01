@@ -20,9 +20,11 @@
     <div class="container">
         <div class="row">
             <div id="app">
+                @php($user = \Auth::user()->user)
+                @php($user->avatar = asset($user->avatar))
                 <create-event
                         store-url="{{ route('event.store') }}"
-                        supplier="{{ \Auth::user()->user }}"
+                        supplier="{{ $user }}"
                         csrf="{{ csrf_token() }}"
                         all-type="{{ json_encode($types ?? null) }}"
                         all-category="{{ json_encode($categories ?? null) }}"

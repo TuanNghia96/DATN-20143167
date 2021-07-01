@@ -5,6 +5,7 @@ use App\Models\Category;
 use App\Models\Event;
 use App\Models\Type;
 use Faker\Factory;
+use Carbon\Carbon;
 
 class PreviewEventTableSeeder extends Seeder
 {
@@ -18,9 +19,9 @@ class PreviewEventTableSeeder extends Seeder
         Event::truncate();
 
         $faker = Factory::create();
-        $randDatetime = $faker->dateTimeBetween($startDate = '-5 days', $endDate = '+5 days');
+        $randDatetime = '2021-01-31 00:16:18';
         $i = 1;
-        Event::create(
+        Event::insert([
             [
                 'name' => 'Cty tài chính khai trương',
                 'title' => 'MTV MB',
@@ -45,14 +46,12 @@ class PreviewEventTableSeeder extends Seeder
                 'type_id' => $faker->randomElement(Type::pluck('id')),
                 'category_id' => $faker->randomElement(Category::pluck('id')),
                 'public_date' => $randDatetime,
-                'start_date' => date_add($randDatetime, date_interval_create_from_date_string('4 days')),
-                'end_date' => date_add($randDatetime, date_interval_create_from_date_string('8 days')),
+                'start_date' => '2021-02-05 00:16:18',
+                'end_date' => '2021-12-05 00:16:18',
                 'ticket_number' => $faker->numerify('##000'),
                 'coupon_value' =>  rand(1, 99),
                 'point' => $faker->numberBetween(900, 1000),
-                'status' => $randDatetime > now()
-                    ? array_rand(Event::$status)
-                    : $faker->randomElement([Event::VALIDATED, Event::CANCEL])
+                'status' => Event::VALIDATED
             ],
             [
                 'name' => 'Thủy cung mở cửa',
@@ -78,14 +77,12 @@ class PreviewEventTableSeeder extends Seeder
                 'type_id' => $faker->randomElement(Type::pluck('id')),
                 'category_id' => $faker->randomElement(Category::pluck('id')),
                 'public_date' => $randDatetime,
-                'start_date' => date_add($randDatetime, date_interval_create_from_date_string('4 days')),
-                'end_date' => date_add($randDatetime, date_interval_create_from_date_string('8 days')),
+                'start_date' => '2021-02-05 00:16:18',
+                'end_date' => '2021-12-05 00:16:18',
                 'ticket_number' => $faker->numerify('##000'),
                 'coupon_value' =>  rand(1, 99),
                 'point' => $faker->numberBetween(900, 1000),
-                'status' => $randDatetime > now()
-                    ? array_rand(Event::$status)
-                    : $faker->randomElement([Event::VALIDATED, Event::CANCEL])
+                'status' => Event::VALIDATED
             ],
             [
                 'name' => 'Combo thịt nướng giảm giá',
@@ -111,14 +108,12 @@ class PreviewEventTableSeeder extends Seeder
                 'type_id' => $faker->randomElement(Type::pluck('id')),
                 'category_id' => $faker->randomElement(Category::pluck('id')),
                 'public_date' => $randDatetime,
-                'start_date' => date_add($randDatetime, date_interval_create_from_date_string('4 days')),
-                'end_date' => date_add($randDatetime, date_interval_create_from_date_string('8 days')),
+                'start_date' => '2021-02-05 00:16:18',
+                'end_date' => '2021-12-05 00:16:18',
                 'ticket_number' => $faker->numerify('##000'),
                 'coupon_value' =>  rand(1, 99),
                 'point' => $faker->numberBetween(900, 1000),
-                'status' => $randDatetime > now()
-                    ? array_rand(Event::$status)
-                    : $faker->randomElement([Event::VALIDATED, Event::CANCEL])
+                'status' => Event::VALIDATED
             ],
             [
                 'name' => 'Ra mắt Ephone',
@@ -144,14 +139,12 @@ class PreviewEventTableSeeder extends Seeder
                 'type_id' => $faker->randomElement(Type::pluck('id')),
                 'category_id' => $faker->randomElement(Category::pluck('id')),
                 'public_date' => $randDatetime,
-                'start_date' => date_add($randDatetime, date_interval_create_from_date_string('4 days')),
-                'end_date' => date_add($randDatetime, date_interval_create_from_date_string('8 days')),
+                'start_date' => '2021-02-05 00:16:18',
+                'end_date' => '2021-12-05 00:16:18',
                 'ticket_number' => $faker->numerify('##000'),
                 'coupon_value' =>  rand(1, 99),
-                'point' => $faker->numberBetween(900, 1000),
-                'status' => $randDatetime > now()
-                    ? array_rand(Event::$status)
-                    : $faker->randomElement([Event::VALIDATED, Event::CANCEL])
+                'point' => 1000,
+                'status' => Event::VALIDATED
             ],
             [
                 'name' => 'Hội thảo tuyển dụng',
@@ -177,14 +170,12 @@ class PreviewEventTableSeeder extends Seeder
                 'type_id' => $faker->randomElement(Type::pluck('id')),
                 'category_id' => $faker->randomElement(Category::pluck('id')),
                 'public_date' => $randDatetime,
-                'start_date' => date_add($randDatetime, date_interval_create_from_date_string('4 days')),
-                'end_date' => date_add($randDatetime, date_interval_create_from_date_string('8 days')),
+                'start_date' => '2021-02-05 00:16:18',
+                'end_date' => '2021-12-05 00:16:18',
                 'ticket_number' => $faker->numerify('##000'),
                 'coupon_value' =>  rand(1, 99),
-                'point' => $faker->numberBetween(900, 1000),
-                'status' => $randDatetime > now()
-                    ? array_rand(Event::$status)
-                    : $faker->randomElement([Event::VALIDATED, Event::CANCEL])
+                'point' => 1000,
+                'status' => Event::VALIDATED
             ],
             [
                 'name' => 'Kỷ niệm 30 năm',
@@ -210,14 +201,12 @@ class PreviewEventTableSeeder extends Seeder
                 'type_id' => $faker->randomElement(Type::pluck('id')),
                 'category_id' => $faker->randomElement(Category::pluck('id')),
                 'public_date' => $randDatetime,
-                'start_date' => date_add($randDatetime, date_interval_create_from_date_string('4 days')),
-                'end_date' => date_add($randDatetime, date_interval_create_from_date_string('8 days')),
+                'start_date' => '2021-02-05 00:16:18',
+                'end_date' => '2021-12-05 00:16:18',
                 'ticket_number' => $faker->numerify('##000'),
                 'coupon_value' =>  rand(1, 99),
                 'point' => $faker->numberBetween(900, 1000),
-                'status' => $randDatetime > now()
-                    ? array_rand(Event::$status)
-                    : $faker->randomElement([Event::VALIDATED, Event::CANCEL])
+                'status' => Event::VALIDATED
             ],
             [
                 'name' => 'Công bố tivi 4k',
@@ -243,14 +232,12 @@ class PreviewEventTableSeeder extends Seeder
                 'type_id' => $faker->randomElement(Type::pluck('id')),
                 'category_id' => $faker->randomElement(Category::pluck('id')),
                 'public_date' => $randDatetime,
-                'start_date' => date_add($randDatetime, date_interval_create_from_date_string('4 days')),
-                'end_date' => date_add($randDatetime, date_interval_create_from_date_string('8 days')),
+                'start_date' => '2021-02-05 00:16:18',
+                'end_date' => '2021-12-05 00:16:18',
                 'ticket_number' => $faker->numerify('##000'),
                 'coupon_value' =>  rand(1, 99),
                 'point' => $faker->numberBetween(900, 1000),
-                'status' => $randDatetime > now()
-                    ? array_rand(Event::$status)
-                    : $faker->randomElement([Event::VALIDATED, Event::CANCEL])
+                'status' => Event::VALIDATED
             ],
             [
                 'name' => 'GỬI LỜI TRI ÂN KHÁCH HÀNG',
@@ -276,14 +263,12 @@ class PreviewEventTableSeeder extends Seeder
                 'type_id' => $faker->randomElement(Type::pluck('id')),
                 'category_id' => $faker->randomElement(Category::pluck('id')),
                 'public_date' => $randDatetime,
-                'start_date' => date_add($randDatetime, date_interval_create_from_date_string('4 days')),
-                'end_date' => date_add($randDatetime, date_interval_create_from_date_string('8 days')),
+                'start_date' => '2021-02-05 00:16:18',
+                'end_date' => '2021-12-05 00:16:18',
                 'ticket_number' => $faker->numerify('##000'),
                 'coupon_value' =>  rand(1, 99),
                 'point' => $faker->numberBetween(900, 1000),
-                'status' => $randDatetime > now()
-                    ? array_rand(Event::$status)
-                    : $faker->randomElement([Event::VALIDATED, Event::CANCEL])
+                'status' => Event::VALIDATED
             ],
             [
                 'name' => 'Đi chùa đầu năm',
@@ -309,14 +294,12 @@ class PreviewEventTableSeeder extends Seeder
                 'type_id' => $faker->randomElement(Type::pluck('id')),
                 'category_id' => $faker->randomElement(Category::pluck('id')),
                 'public_date' => $randDatetime,
-                'start_date' => date_add($randDatetime, date_interval_create_from_date_string('4 days')),
-                'end_date' => date_add($randDatetime, date_interval_create_from_date_string('8 days')),
+                'start_date' => '2021-02-05 00:16:18',
+                'end_date' => '2021-12-05 00:16:18',
                 'ticket_number' => $faker->numerify('##000'),
                 'coupon_value' =>  rand(1, 99),
                 'point' => $faker->numberBetween(900, 1000),
-                'status' => $randDatetime > now()
-                    ? array_rand(Event::$status)
-                    : $faker->randomElement([Event::VALIDATED, Event::CANCEL])
+                'status' => Event::VALIDATED
             ],
             [
                 'name' => 'Cuộc thi hoa hậu VN',
@@ -342,15 +325,14 @@ class PreviewEventTableSeeder extends Seeder
                 'type_id' => $faker->randomElement(Type::pluck('id')),
                 'category_id' => $faker->randomElement(Category::pluck('id')),
                 'public_date' => $randDatetime,
-                'start_date' => date_add($randDatetime, date_interval_create_from_date_string('4 days')),
-                'end_date' => date_add($randDatetime, date_interval_create_from_date_string('8 days')),
+                'start_date' => '2021-02-05 00:16:18',
+                'end_date' => '2021-12-05 00:16:18',
                 'ticket_number' => $faker->numerify('##000'),
                 'coupon_value' =>  rand(1, 99),
-                'point' => $faker->numberBetween(900, 1000),
-                'status' => $randDatetime > now()
-                    ? array_rand(Event::$status)
-                    : $faker->randomElement([Event::VALIDATED, Event::CANCEL])
+                'point' => 1000,
+                'status' => Event::VALIDATED
             ],
+        ]
         );
     }
 }

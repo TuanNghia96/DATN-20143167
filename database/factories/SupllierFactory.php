@@ -15,7 +15,7 @@ $factory->define(Supplier::class, function (Faker $faker) {
         'supplier_code' => sprintf("SL%05s", $i++),
         'name' => $faker->name,
         'address' => $faker->randomElement(Helper::getLocation()),
-        'avatar' => 'fakers/suppliers/1_logo.png',
+        'avatar' => 'fakers/suppliers/'. rand(1, 20) . '_logo.png',
         'city' => array_rand(Supplier::CITY),
         'phone' => $faker->phoneNumber,
         'bank_account' => $faker->bankAccountNumber,

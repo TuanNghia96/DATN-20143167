@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $events = Event::active()->orderBy('point')->take(5)->get();
+        $events = Event::active()->orderBy('point', 'desc')->take(5)->get();
         $subEvents = Event::active()->orderBy('point', 'desc')->skip(5)->take(6)->get();
         return view('frontend.index', compact('events', 'subEvents'));
     }

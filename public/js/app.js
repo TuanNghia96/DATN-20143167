@@ -78901,7 +78901,7 @@ var render = function() {
               _c(
                 "a",
                 { attrs: { href: _vm.urlDetail.replace(999, event.id) } },
-                [_vm._v("Get Ticket")]
+                [_vm._v("THAM GIA")]
               )
             ])
           ])

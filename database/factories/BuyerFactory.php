@@ -15,7 +15,7 @@ $factory->define(Buyer::class, function (Faker $faker) {
         'buyer_code' => $code,
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'avatar' => 'fakers/buyers/avatar.jpg',
+        'avatar' => 'fakers/buyers/' . rand(0, 9) . 'image.jpg',
         'address' => $faker->address,
         'phone' => $faker->phoneNumber,
         'bank_account' => $faker->bankAccountNumber,
